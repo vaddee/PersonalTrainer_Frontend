@@ -1,16 +1,27 @@
 
 
 /* import './App.css' */
+import { Link, Outlet } from "react-router-dom";
 
-import Customer from "./assets/components/Customer"
-import Training from "./assets/components/Training"
+
 
 function App() {
   
 
   return (
     <>
-      <Customer/>
+
+<nav>
+        <Link to={"/"}>pääsivu</Link>{' '}
+        
+        <Link to={"/training"}>Training</Link>{' '}
+        <Outlet />
+        
+
+
+        
+      </nav>
+      
     </>
   )
 }
