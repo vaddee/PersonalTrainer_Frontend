@@ -27,6 +27,7 @@ const router = createBrowserRouter([  // Import components that are used in rout
         path: "training",                // path can be defined relative to the parent path
         element: <Training />,
       },
+      
      
     ]
   }
