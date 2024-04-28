@@ -99,6 +99,14 @@ export default function EditCustomer(props){
                 onChange={ (e) => setCustomer({...customer, email: e.target.value})}
                 variant="standard">
             </TextField>
+
+            <TextField
+                margin="dense"
+                label="phone"
+                value={customer.phone}
+                onChange={ (e) => setCustomer({...customer, phone: e.target.value})}
+                variant="standard">
+            </TextField>
         </DialogContent>
         <DialogActions>
             <Button onClick={handleSave}>Save edited</Button>

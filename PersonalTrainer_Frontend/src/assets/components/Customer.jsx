@@ -5,6 +5,7 @@ import "ag-grid-community/styles/ag-theme-material.css";
 import Training from "./Training"; // Make sure the file path is correct
 import AddCustomer from "./AddCustomer";
 import EditCustomer from "./EditCustomer";
+import AddTrainingToCustomer from "./AddTrainingToCustomer";
 
 import { Button, Snackbar } from "@mui/material";
 
@@ -31,7 +32,12 @@ export default function Customer() { // hyvaksyy data props
         {
             cellRenderer: (params) =>
                 <Button size="small" color="error" onClick={() => deleteCustomer(params)}>Delete</Button>, width: 120
-        }
+        } ,
+        { //lisätään treeni asiakkaalle
+            cellRenderer: (params) =>
+            <AddTrainingToCustomer addTrainingToCustomer={addTrainingToCustomer} params={params}/>
+        } 
+
     ]);
 
 
@@ -127,9 +133,29 @@ export default function Customer() { // hyvaksyy data props
         .catch(err => console.error(err))
     }
 
+    // addTrainingTOCUstomer
+
+    const addTrainingToCustomer = (training) => {
+        fetch(URL, {
+            method: 'POST',
+            headers: { 'Content-type': 'application/json' },
+            body: JSON.stringify(training)
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log("Training added successfully");
+                getCustomers(); // Update customers after adding training
+            } else {
+                throw new Error('Failed to add training to customer');
+            }
+        })
+        .catch(err => console.error(err));
+    } 
+
     return (
         <div>
         <AddCustomer addCustomer={addCustomer}/>
+        
         
 
         <div className="ag-theme-material" style={{ height: 400, width: '100%' }}>

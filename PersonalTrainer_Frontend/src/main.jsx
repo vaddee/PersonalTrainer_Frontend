@@ -11,6 +11,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Customer from './assets/components/Customer.jsx';
 import Training from './assets/components/Training.jsx';
 import Error from './assets/Error.jsx';
+import MyCalendar from './assets/components/MyCalendar.jsx';
+import { Calendar } from 'react-big-calendar';
 
 
 const router = createBrowserRouter([  // Import components that are used in routes
@@ -26,6 +28,10 @@ const router = createBrowserRouter([  // Import components that are used in rout
       {
         path: "training",                // path can be defined relative to the parent path
         element: <Training />,
+      },
+      {
+        path: "calendar",                // path can be defined relative to the parent path
+        element: <MyCalendar />,
       },
       
      
