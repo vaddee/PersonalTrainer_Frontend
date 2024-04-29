@@ -23,6 +23,9 @@ function App() {
     <Link to={"/"} style={{ marginLeft: '20px', marginRight: '20px' }}>Customers</Link>{' '} {/* Apply margin to the Link */}
     <Link to={"/training"} style={{ marginLeft: '20px', marginRight: '20px' }}>Training</Link>{' '} {/* Apply margin to the Link */}
     <Link to={"/calendar"} style={{ marginLeft: '20px', marginRight: '20px' }}>Calendar</Link>{' '} {/* Apply margin to the Link */}
+    <Link to={"/statistics"} style={{ marginLeft: '20px', marginRight: '20px' }}>Statistics</Link>{' '} {/* Apply margin to the Link */}
+
+    
   </Toolbar>
 </AppBar>
 

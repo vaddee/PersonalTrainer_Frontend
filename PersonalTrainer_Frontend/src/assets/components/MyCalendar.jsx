@@ -20,14 +20,18 @@ const MyCalendar = () => {
       });
   }, []);
 
-  // Muuntaa harjoitustiedot sopiviksi tapahtumiksi react-big-calendarille
-  const convertToEvents = () => {
-    return trainings.map(training => ({
+// Muuntaa harjoitustiedot sopiviksi tapahtumiksi react-big-calendarille
+const convertToEvents = () => {
+  return trainings.map(training => {
+    if (!training.customer) return null; // Check if training.customer is null. Tuli bugi ja piti lisätä
+
+    return {
       title: `${training.activity} - ${training.customer.firstname} ${training.customer.lastname}`,
       start: new Date(training.date),
       end: moment(training.date).add(training.duration, 'minutes').toDate(),
-    }));
-  };
+    };
+  }).filter(event => event !== null); // Remove null events from the array
+};
 
   return (
     <div style={{ height: 800 }}>
