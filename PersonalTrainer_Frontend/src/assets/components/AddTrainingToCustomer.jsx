@@ -6,11 +6,13 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 
+
 export default function AddTrainingToCustomer(props) {
     const [training, setTraining] = useState({
         activity: '',
         date: '',
-        duration: ''
+        duration: '',
+        customer: null
         
     });
 
@@ -19,35 +21,28 @@ export default function AddTrainingToCustomer(props) {
 
     const handleClickOpen = () => {
         setOpen(true);
+        setTraining({
+            customer: props.params.data._links.customer.href
+        })
     };
 
     const handleClose = () => {
         setOpen(false);
     };
 
-    /* const handleSave = () => {
-        console.log("Adding training:", training);
     
-        // Call the function to add training to the customer
-        props.addTrainingToCustomer(props.params.data.trainings, training);
-    
-        // Close the dialog
-        handleClose();
-    }; */
 
     const handleSave = () => {
         console.log("Adding training:", training);
     
         // Call the function to add training to the customer
-        props.addTrainingToCustomer({
-            activity: training.activity,
-            date: training.date,
-            duration: training.duration
-        });
+        props.addTrainingToCustomer(training); // Ensure training object includes customer link
     
         // Close the dialog
         handleClose();
     };
+    
+    
     
     
 
@@ -67,7 +62,7 @@ export default function AddTrainingToCustomer(props) {
                     <TextField
                         margin="dense"
                         label="Date"
-                        type="date"
+                        type="datetime-local"
                         value={training.date}
                         onChange={(e) => setTraining({ ...training, date: e.target.value })}
                         fullWidth

@@ -7,6 +7,7 @@ import AddCustomer from "./AddCustomer";
 import EditCustomer from "./EditCustomer";
 import AddTrainingToCustomer from "./AddTrainingToCustomer";
 
+
 import { Button, Snackbar } from "@mui/material";
 
 
@@ -18,13 +19,13 @@ export default function Customer() { // hyvaksyy data props
     const URL = 'https://customerrestservice-personaltraining.rahtiapp.fi/api/customers';
 
     const [colDefs, setColDefs] = useState([
-        { field: 'firstname' },
-        { field: 'lastname' },
-        { field: 'streetaddress' },
-        { field: 'postcode' },
-        { field: 'city' },
-        { field: 'email' },
-        { field: 'phone' },
+        { field: 'firstname' , headerName: 'First Name', sortable: true, filter: true, floatingFilter: true },
+        { field: 'lastname', headerName: 'Last Name', sortable: true, filter: true, floatingFilter: true},
+        { field: 'streetaddress', headerName: 'Street address', sortable: true, filter: true, floatingFilter: true },
+        { field: 'postcode', headerName: 'Postcode', sortable: true, filter: true, floatingFilter: true },
+        { field: 'city', headerName: 'City', sortable: true, filter: true, floatingFilter: true },
+        { field: 'email', headerName: 'Email', sortable: true, filter: true, floatingFilter: true },
+        { field: 'phone', headerName: 'Phone', sortable: true, filter: true, floatingFilter: true},
         {
             cellRenderer: (params) =>
                 <EditCustomer updateCustomer={updateCustomer} params={params}/>
@@ -37,6 +38,9 @@ export default function Customer() { // hyvaksyy data props
             cellRenderer: (params) =>
             <AddTrainingToCustomer addTrainingToCustomer={addTrainingToCustomer} params={params}/>
         } 
+
+        
+
 
     ]);
 
@@ -136,7 +140,7 @@ export default function Customer() { // hyvaksyy data props
     // addTrainingTOCUstomer
 
     const addTrainingToCustomer = (training) => {
-        fetch(URL, {
+        fetch('https://customerrestservice-personaltraining.rahtiapp.fi/api/trainings', {
             method: 'POST',
             headers: { 'Content-type': 'application/json' },
             body: JSON.stringify(training)
@@ -158,7 +162,7 @@ export default function Customer() { // hyvaksyy data props
         
         
 
-        <div className="ag-theme-material" style={{ height: 400, width: '100%' }}>
+        <div className="ag-theme-material" style={{ height: 700, width: '100%' }}>
             <AgGridReact
                 rowData={customers}
                 columnDefs={colDefs}
