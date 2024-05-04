@@ -5,7 +5,7 @@ import "ag-grid-community/styles/ag-theme-material.css";
 import dayjs from "dayjs";
 import { Button, Snackbar } from "@mui/material";
 import { CSVLink } from "react-csv";
-import DeleteIcon from '@mui/icons-material/Delete'; // Import DeleteIcon from Material-UI
+import DeleteIcon from '@mui/icons-material/Delete'; // delete iconi
 
 
 export default function Training() {
