@@ -19,11 +19,11 @@ function App() {
             <Typography variant="h6">
               Personal Training Application
             </Typography>
-            <div style={{ marginLeft: '20px' }} /> {/* Add a div with specified margin */}
-            <Link to={"/"} style={{ marginLeft: '20px', marginRight: '20px' }}>Customers</Link>{' '} {/* Apply margin to the Link */}
-            <Link to={"/training"} style={{ marginLeft: '20px', marginRight: '20px' }}>Training</Link>{' '} {/* Apply margin to the Link */}
-            <Link to={"/calendar"} style={{ marginLeft: '20px', marginRight: '20px' }}>Calendar</Link>{' '} {/* Apply margin to the Link */}
-            <Link to={"/statistics"} style={{ marginLeft: '20px', marginRight: '20px' }}>Statistics</Link>{' '} {/* Apply margin to the Link */}
+            <div style={{ marginLeft: '20px' }} /> 
+            <Link to={"/"} style={{ marginLeft: '20px', marginRight: '20px' }}>Customers</Link>{' '} 
+            <Link to={"/training"} style={{ marginLeft: '20px', marginRight: '20px' }}>Training</Link>{' '} 
+            <Link to={"/calendar"} style={{ marginLeft: '20px', marginRight: '20px' }}>Calendar</Link>{' '} 
+            <Link to={"/statistics"} style={{ marginLeft: '20px', marginRight: '20px' }}>Statistics</Link>{' '} 
 
 
           </Toolbar>

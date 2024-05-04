@@ -7,6 +7,7 @@ import AddCustomer from "./AddCustomer";
 import EditCustomer from "./EditCustomer";
 import AddTrainingToCustomer from "./AddTrainingToCustomer";
 
+import DeleteIcon from '@mui/icons-material/Delete';
 
 import { Button, Snackbar } from "@mui/material";
 
@@ -27,15 +28,23 @@ export default function Customer() { // hyvaksyy data props
         { field: 'email', headerName: 'Email', sortable: true, filter: true, floatingFilter: true },
         { field: 'phone', headerName: 'Phone', sortable: true, filter: true, floatingFilter: true},
         {
-            cellRenderer: (params) =>
+            cellRenderer: (params) => //edit
                 <EditCustomer updateCustomer={updateCustomer} params={params}/>
         },
         {
-            cellRenderer: (params) =>
-                <Button size="small" color="error" onClick={() => deleteCustomer(params)}>Delete</Button>, width: 120
-        } ,
+            cellRenderer: (params) => ( //delete
+                <Button
+                    size="small"
+                    color="error"
+                    onClick={() => deleteCustomer(params)}
+                    startIcon={<DeleteIcon />}
+                    
+                />
+            ),
+            width: 120
+        },
         { //lisätään treeni asiakkaalle
-            cellRenderer: (params) =>
+            cellRenderer: (params) => 
             <AddTrainingToCustomer addTrainingToCustomer={addTrainingToCustomer} params={params}/>
         } 
 
@@ -69,7 +78,7 @@ export default function Customer() { // hyvaksyy data props
     // poistetaan customer
     const deleteCustomer = (params) => {
         //console.log(params.data);
-        if (window.confirm("Are you sure?")) {
+        if (window.confirm("Are you sure you want to delete this customer?")) {
             console.log(params.data._links.customer.href);
             fetch(params.data._links.customer.href, { method: 'DELETE' })
                 .then(response => {

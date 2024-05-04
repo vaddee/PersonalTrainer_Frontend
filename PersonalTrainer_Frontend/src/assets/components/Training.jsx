@@ -5,6 +5,8 @@ import "ag-grid-community/styles/ag-theme-material.css";
 import dayjs from "dayjs";
 import { Button, Snackbar } from "@mui/material";
 import { CSVLink } from "react-csv";
+import DeleteIcon from '@mui/icons-material/Delete'; // Import DeleteIcon from Material-UI
+
 
 export default function Training() {
     const [trainings, setTrainings] = useState([]);
@@ -20,9 +22,18 @@ export default function Training() {
         { field: 'duration', headerName: 'Duration', sortable: true, filter: true, floatingFilter: true },
         { field: 'activity', headerName: 'Activity', sortable: true, filter: true, floatingFilter: true },
         {
-            cellRenderer: (params) =>
-                <Button size="small" color="error" onClick={() => deleteTraining(params)}>Delete training</Button>, width: 120
-        } ,
+            
+                cellRenderer: (params) => (
+                    <Button
+                        size="small"
+                        color="error"
+                        onClick={() => deleteTraining(params)}
+                        startIcon={<DeleteIcon style={{fontSize: 20}}/>} // Use DeleteIcon as start icon
+                    >
+                        
+                    </Button>
+                )
+            },
     ]);
 
     useEffect(() => {
