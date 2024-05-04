@@ -1,53 +1,30 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-/* import './index.css' */
-
-
-
-
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import App from './App.jsx';
 import Customer from './assets/components/Customer.jsx';
 import Training from './assets/components/Training.jsx';
 import Error from './assets/Error.jsx';
 import MyCalendar from './assets/components/MyCalendar.jsx';
-import { Calendar } from 'react-big-calendar';
 import Statistics from './assets/components/Statistics.jsx';
 
+const router = (
+  <HashRouter>
+    <Routes>
+      <Route path="/" element={<App />}>
+        <Route index element={<Customer />} />
+        <Route path="training" element={<Training />} />
+        <Route path="calendar" element={<MyCalendar />} />
+        <Route path="statistics" element={<Statistics />} />
+        <Route path="*" element={<Error />} />
+      </Route>
+    </Routes>
+  </HashRouter>
+);
 
-const router = createBrowserRouter([  // Import components that are used in routes
-  {
-    path: "/",
-    element: <App />,
-    errorElement: <Error />,    //error käsittely
-    children: [                       // children are nested routes with a route
-      {
-        element: <Customer />,
-        index: true                   // index route does not need any path
-      },
-      {
-        path: "training",                // path can be defined relative to the parent path
-        element: <Training />,
-      },
-      {
-        path: "calendar",                // path can be defined relative to the parent path
-        element: <MyCalendar />,
-      },
-
-      {
-        path: "statistics",                // path can be defined relative to the parent path
-        element: <Statistics />,
-      },
-      
-      
-     
-    ]
-  }
-]);
-
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    {router}
   </React.StrictMode>,
-)
+  document.getElementById('root')
+);
