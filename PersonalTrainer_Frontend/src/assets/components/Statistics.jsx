@@ -9,13 +9,11 @@ const Statistics = () => {
     }, []);
 
     const fetchActivityData = () => {
-        // Tässä voit tehdä tarvittavat kutsut hakeaksesi harjoitustietoja
-        // Esimerkiksi fetch-kutsu, jolla haetaan harjoitustiedot palvelimelta
+        
         fetch('https://customerrestservice-personaltraining.rahtiapp.fi/gettrainings')
             .then(response => response.json())
             .then(data => {
-                // Oletetaan että saat vastauksena tietoja, jotka sisältävät activityn ja sen keston
-                // Muokkaa tarvittaessa datan muotoa siten, että se sopii Rechartsin käyttöön
+                
                 const formattedData = processData(data);
                 setData(formattedData);
             })
@@ -25,8 +23,7 @@ const Statistics = () => {
     }
 
     const processData = (data) => {
-        // Tässä voit muokata harjoitustietoja sopivaan muotoon Rechartsin käyttöön
-        // Esimerkiksi ryhmittelemällä harjoitukset activityn perusteella ja laskemalla niiden kestot yhteen
+        
         const activityMap = {};
         data.forEach(training => {
             const activity = training.activity;
@@ -37,7 +34,7 @@ const Statistics = () => {
                 activityMap[activity] = duration;
             }
         });
-        // Muotoile data Rechartsin ymmärtämään muotoon
+        
         const formattedData = Object.keys(activityMap).map(activity => ({
             activity: activity,
             duration: activityMap[activity]

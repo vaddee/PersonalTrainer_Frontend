@@ -28,7 +28,7 @@ export default function Training() {
                         size="small"
                         color="error"
                         onClick={() => deleteTraining(params)}
-                        startIcon={<DeleteIcon style={{fontSize: 20}}/>} // Use DeleteIcon as start icon
+                        startIcon={<DeleteIcon style={{fontSize: 20}}/>} // delete iconi
                     >
                         
                     </Button>

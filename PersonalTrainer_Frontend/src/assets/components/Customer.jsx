@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-material.css";
-import Training from "./Training"; // Make sure the file path is correct
+
 import AddCustomer from "./AddCustomer";
 import EditCustomer from "./EditCustomer";
 import AddTrainingToCustomer from "./AddTrainingToCustomer";
@@ -12,7 +12,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { Button, Snackbar } from "@mui/material";
 
 
-export default function Customer() { // hyvaksyy data props
+export default function Customer() { 
     const [customers, setCustomers] = useState([{ firstname: '', lastname: '', streetaddress: '', postcode: '', city: '', email: '', phone: '' }]);
 
     const [openSnackbar, setOpenSnackbar] = useState(false);
@@ -157,7 +157,7 @@ export default function Customer() { // hyvaksyy data props
         .then(response => {
             if (response.ok) {
                 console.log("Training added successfully");
-                getCustomers(); // Update customers after adding training
+                getCustomers(); // päivittää customers treenin lisays jälkeen
             } else {
                 throw new Error('Failed to add training to customer');
             }

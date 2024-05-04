@@ -16,7 +16,7 @@ export default function AddTrainingToCustomer(props) {
         
     });
 
-    // open = false, when the dialog is closed
+    // open = false, kun dialogi ikkuna suljettu
     const [open, setOpen] = useState(false);
 
     const handleClickOpen = () => {
@@ -35,10 +35,10 @@ export default function AddTrainingToCustomer(props) {
     const handleSave = () => {
         console.log("Adding training:", training);
     
-        // Call the function to add training to the customer
-        props.addTrainingToCustomer(training); // Ensure training object includes customer link
+        // Call the function to add training to the customer kutsutaan funktiota lisäämään treeni asiakkaalle
+        props.addTrainingToCustomer(training);  link
     
-        // Close the dialog
+        // sulje dialogi
         handleClose();
     };
     
